@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #4facfe, #00f2fe);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 30px;
+    }
+
+    /* Flying Heading */
+    .welcome-title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #facc15;
+      display: inline-block;
+      white-space: nowrap;
+      overflow: hidden;
+      animation: slideIn 5s ease-out forwards;
+    }
+
+    @keyframes slideIn {
+      0% {
+        transform: translateX(100%) rotate(5deg);
+        opacity: 0;
+      }
+      60% {
+        transform: translateX(-10px) rotate(-3deg);
+        opacity: 1;
+      }
+      80% {
+        transform: translateX(5px) rotate(2deg);
+      }
+      100% {
+        transform: translateX(0) rotate(0);
+      }
+    }
+
+    .profile-card {
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 20px;
+      padding: 30px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      color: #fff;
+      width: 100%;
+      max-width: 700px;
+      transition: transform 3s ease;
+      animation: slideSpin 5s ease forwards;
+      margin-top: 100px;
+      opacity: 0;
+    }
+
+    @keyframes slideSpin {
+      0% {
+        transform: translateY(100px) translateX(-100px) rotate(-180deg) scale(0.6);
+        opacity: 0;
+      }
+      60% {
+        transform: translateY(-20px) translateX(10px) rotate(20deg) scale(1.05);
+        opacity: 1;
+      }
+      80% {
+        transform: translateY(10px) translateX(-5px) rotate(-10deg) scale(0.98);
+      }
+      100% {
+        transform: translateY(0) translateX(0) rotate(0) scale(1);
+        opacity: 1;
+      }
+    }
+
+    .profile-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      justify-content: space-between; /* ✅ logout button ko right side rakhne ke liye */
+    }
+
+    .profile-header img {
+      border: 4px solid #fff;
+      transition: 0.3s;
+    }
+
+    .profile-header img:hover {
+      transform: scale(1.05) rotate(3deg);
+    }
+
+    .profile-header h4 {
+      margin: 0;
+      font-weight: bold;
+    }
+
+    .btn-outline-light {
+      border-radius: 20px;
+      padding: 6px 16px;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .btn-outline-light:hover {
+      background: #fff;
+      color: #000;
+    }
+
+    .history-list {
+      margin-top: 10px;
+    }
+
+    .history-item {
+      background: rgba(255,255,255,0.1);
+      border-radius: 15px;
+      padding: 15px 20px;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: 0.3s;
+    }
+
+    .history-item:hover {
+      background: rgba(255,255,255,0.25);
+      transform: translateX(5px);
+    }
+
+    .history-item b {
+      font-size: 16px;
+    }
+
+    .badge-status {
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .badge-passed { background: #4caf50; }
+    .badge-failed { background: #e53935; }
+    .badge-attempt { background: #ff9800; }
+
+    .start-btn {
+      margin-top: 25px;
+      border-radius: 30px;
+      font-weight: bold;
+      padding: 14px 30px;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      border: none;
+      color: #000;
+      transition: 0.3s;
+    }
+
+    .start-btn:hover {
+      transform: scale(1.07);
+      background: linear-gradient(135deg, #fad0c4, #ff9a9e);
+    }
+
+    .logout-btn {
+      border-radius: 20px;
+      padding: 6px 16px;
+      font-size: 14px;
+      font-weight: bold;
+      background: #ff4b5c;
+      border: none;
+      color: #fff;
+      transition: 0.3s;
+    }
+
+    .logout-btn:hover {
+      background: #e63946;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <!-- Flying Welcome Heading -->
+  <h1 class="welcome-title">✨ Welcome Quiz App ✨</h1>
+
+  <div class="profile-card">
+    <div class="profile-header">
+      <div class="d-flex align-items-center">
+        <img src="assets/default.png" id="profilePic" class="rounded-circle me-3" width="90" height="90">
+        <div>
+          <h4 id="profileName">User</h4>
+          <button class="btn btn-sm btn-outline-light mt-1" onclick="editProfile()">Edit Profile</button>
+        </div>
+      </div>
+      <!-- ✅ Logout button added -->
+      <button class="logout-btn" onclick="logout()">🚪 Logout</button>
+    </div>
+
+    <hr class="border-light">
+    <h5>📜 Test History</h5>
+    <div id="testHistory" class="history-list">
+      <!-- history items js se aayenge -->
+      <div class="history-item">
+        <div>
+          <b>Python</b> — Score: 3/3 <br>
+          <small>⏱️ 8s • 27 Aug 2025</small>
+        </div>
+        <span class="badge-status badge-passed">Passed</span>
+      </div>
+      <div class="history-item">
+        <div>
+          <b>Java</b> — Score: 1/3 <br>
+          <small>⏱️ 25s • 26 Aug 2025</small>
+        </div>
+        <span class="badge-status badge-failed">Failed</span>
+      </div>
+      <div class="history-item">
+        <div>
+          <b>C</b> — Score: 2/3 <br>
+          <small>⏱️ 15s • 25 Aug 2025</small>
+        </div>
+        <span class="badge-status badge-attempt">Attempt</span>
+      </div>
+    </div>
+    <div class="text-center">
+      <a href="language.html" class="btn start-btn">🚀 Start New Test</a>
+    </div>
+  </div>
+
+<script>
+  function logout() {
+    // Agar localStorage me user data store kiya hai to clear bhi kar sakte ho
+    localStorage.clear();
+    // Redirect to index.html
+    window.location.href = "index.html";
+  }
+</script>
+<script src="js/profile.js"></script>
+</body>
+</html>
