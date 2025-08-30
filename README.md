@@ -21,26 +21,22 @@ This project is designed to test users’ knowledge in a fun and engaging way wi
 ---
 
 ## 📂 Project Structure
-SkillTest/
+SkillTest/<br>
 │── index.html # Main HTML file<br>
 │── style.css # Stylesheet <br>
 │── script.js # Quiz functionality<br>
 │── assets/ # Images, icons, or extra files
 
-yaml
-Copy code
 
----
 
-## 📸 Screenshots
-*(Add your project screenshots here for better presentation)*  
+ 
 
 ---
 
 ## 🏃‍♂️ How to Run Locally
 1. Clone the repository:  
    ```bash
-   git clone https://github.com/your-username/SkillTest.git
+   git clone https://github.com/Subhashdangi205/SkillTest.git
 Open the folder and run index.html in your browser.
 
 🌐 Live Demo 
