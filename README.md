@@ -40,7 +40,7 @@ SkillTest/<br>
 Open the folder and run index.html in your browser.
 
 🌐 Live Demo 
-👉 Click here to play (Add your GitHub Pages or hosting link here)
+👉 https://skill-test-eta.vercel.app/
 
 📌 Future Improvements
 Add more quiz categories
