@@ -22,9 +22,9 @@ This project is designed to test users’ knowledge in a fun and engaging way wi
 
 ## 📂 Project Structure
 SkillTest/
-│── index.html # Main HTML file
-│── style.css # Stylesheet
-│── script.js # Quiz functionality
+│── index.html # Main HTML file<br>
+│── style.css # Stylesheet <br>
+│── script.js # Quiz functionality<br>
 │── assets/ # Images, icons, or extra files
 
 yaml
