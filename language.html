@@ -13,6 +13,7 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
+      padding: 10px; 
     }
 
     .card {
@@ -27,11 +28,12 @@
       text-align: center;
       animation: fadeIn 0.8s ease, floatCard 3s ease-in-out infinite;
     }
+
     @keyframes floatCard {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
-}
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
 
     h4 {
       font-weight: bold;
@@ -63,6 +65,28 @@
     .start-btn:hover {
       transform: scale(1.07);
       background: linear-gradient(135deg, #38f9d7, #43e97b);
+    }
+
+    /* ✅ Responsive for small devices */
+    @media (max-width: 500px) {
+      .card {
+        padding: 20px;
+        border-radius: 15px;
+      }
+
+      h4 {
+        font-size: 1.2rem;
+      }
+
+      .form-select {
+        font-size: 14px;
+        padding: 10px;
+      }
+
+      .start-btn {
+        font-size: 14px;
+        padding: 10px;
+      }
     }
   </style>
 </head>
